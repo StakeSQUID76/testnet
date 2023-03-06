@@ -16,7 +16,6 @@
 >- [Validator setup instructions](https://docs-nolus-protocol.notion.site/Nolus-Protocol-Docs-a0ddfe091cc5456183417a68502705f8)
 
 ### Explorer:
->-  https://explorer.nodexcapital.com/nolus
 
 ### Automatic Installer
 You can setup your Nolus fullnode in few minutes by using automated script below.
@@ -25,10 +24,10 @@ wget -O nolus.sh https://raw.githubusercontent.com/nodexcapital/testnet/main/nol
 ```
 ### Public Endpoint
 
->- API : https://api.nolus.nodexcapital.com
->- RPC : https://rpc.nolus.nodexcapital.com
->- gRPC : https://grpc.nolus.nodexcapital.com
->- gRPC Web : https://grpc-web.nolus.nodexcapital.com
+>- API : https://api.nolus.stakesquid.xyz
+>- RPC : https://rpc.nolus.stakesquid.xyz
+>- gRPC : https://grpc.nolus.stakesquid.xyz
+>- gRPC Web : https://grpc-web.nolus.stakesquid.xyz
 
 ### Snapshot (Update every 5 hours)
 ```
@@ -36,7 +35,7 @@ sudo systemctl stop nolusd
 cp $HOME/.nolus/data/priv_validator_state.json $HOME/.nolus/data/priv_validator_state.json.backup
 rm -rf $HOME/.nolus/data
 
-curl -L https://snap.nodexcapital.com/nolus/nolus-latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.nolus
+curl -L https://snapshot.nolus.stakesquid.xyz/nolus/nolus.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.nolus
 
 mv $HOME/.nolus/data/priv_validator_state.json.backup $HOME/.nolus/data/priv_validator_state.json
 
@@ -47,7 +46,7 @@ sudo systemctl start nolusd && sudo journalctl -fu nolusd -o cat
 ```
 nolusd tendermint unsafe-reset-all --home $HOME/.nolus --keep-addr-book
 
-SNAP_RPC="https://rpc.nolus.nodexcapital.com:443"
+SNAP_RPC="https://rpc.nolus.stakesquid.xyz:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
