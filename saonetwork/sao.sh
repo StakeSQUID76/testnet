@@ -70,12 +70,12 @@ rm -rf $SOURCE
 git clone $REPO
 cd $SOURCE
 git checkout $VERSION
-make build
+make install
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 
 # Prepare binaries for Cosmovisor
 mkdir -p $HOME/$FOLDER/$COSMOVISOR/genesis/bin
-mv build/$BINARY $HOME/$FOLDER/$COSMOVISOR/genesis/bin/
+mv $HOME/go/bin/$BINARY $HOME/$FOLDER/$COSMOVISOR/genesis/bin/
 rm -rf build
 
 # Create application symlinks
